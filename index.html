@@ -1,36 +1,224 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home</title>
+<title>Live On Art Studio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #111;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #c6a85b;
+}
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('studio.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content {
+    animation: fadeUp 1.5s ease forwards;
+    opacity: 0;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 35px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: 0.4s;
+}
+
+.btn:hover {
+    background: white;
+    color: black;
+}
+
+/* ABOUT SECTION */
+section {
+    padding: 100px 10%;
+}
+
+section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    color: white;
+    font-size: 28px;
+    padding: 15px 18px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.whatsapp:hover {
+    transform: scale(1.1);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    color: #777;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    header {
+        padding: 15px 5%;
+    }
+}
+
+</style>
 </head>
 <body>
 
 <header>
     <div class="logo">LIVE ON ART STUDIO</div>
     <nav>
-        <a href="index.html" class="active">Home</a>
-        <a href="gallery.html" class="">Gallery</a>
-        <a href="workshops.html" class="">Workshops</a>
-        <a href="contact.html" class="">Contact</a>
+        <a href="#">Home</a>
+        <a href="#">Gallery</a>
+        <a href="#">Workshops</a>
+        <a href="#">Contact</a>
     </nav>
 </header>
+
 <a href="https://wa.me/250787469701" class="whatsapp" target="_blank">💬</a>
 
-
 <section class="hero">
-    <div>
+    <div class="hero-content">
         <h1>Experience Art in a Beautiful Creative Space</h1>
-        <a href="gallery.html" class="btn">View Gallery</a>
+        <a href="#" class="btn">View Gallery</a>
     </div>
+</section>
+
+<section>
+    <h2>About The Studio</h2>
+    <p>
+        Live On Art Studio is a contemporary creative space in Kigali where art,
+        workshops and community meet. We provide private sessions, group workshops,
+        and children's art experiences in a beautiful inspiring environment.
+    </p>
 </section>
 
 <footer>
 © 2026 LIVE ON ART STUDIO — Contemporary Fine Art Studio, Kigali
 </footer>
-<script src="js/script.js"></script>
+
+<script>
+
+/* SCROLL ANIMATION */
+document.addEventListener("DOMContentLoaded", function() {
+
+    const elements = document.querySelectorAll("section h2, section p");
+
+    elements.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = "translateY(30px)";
+    });
+
+    window.addEventListener("scroll", function() {
+        elements.forEach(el => {
+            const position = el.getBoundingClientRect().top;
+
+            if(position < window.innerHeight - 100) {
+                el.style.transition = "all 0.8s ease";
+                el.style.opacity = 1;
+                el.style.transform = "translateY(0)";
+            }
+        });
+    });
+
+});
+
+</script>
+
 </body>
 </html>
